@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Wantsome.WebApp01.Models;
 
@@ -14,7 +11,8 @@ namespace Wantsome.WebApp01.Controllers
         //site/home/index
         public ActionResult Index()
         {
-            var employees = GetList();
+            var manager = new EmployeeManager();
+            var employees = manager.GetAll();
 
             //in folderul views
             //Views/Home/Index.cshtml
@@ -24,8 +22,9 @@ namespace Wantsome.WebApp01.Controllers
         //site/home/details/{id} - id un tip de param (uri param)
         public ActionResult Details(string id)
         {
-            var employees = GetList();
-            var employee = FindById(employees, id);
+            var manager = new EmployeeManager();
+
+            var employee = manager.Get(id);
 
             //Views/Home/Details.cshtml
             return View(employee); //employee - modelul (prezent @model in view)
@@ -42,32 +41,13 @@ namespace Wantsome.WebApp01.Controllers
         {
             if (ModelState.IsValid)
             {
+                IEmployeeManager manager = new EmployeeManager();
+                manager.Save(employee);
+
                 return Redirect("Index");
             }
 
             return View(employee);
-        }
-
-        private Employee FindById(List<Employee> employees, string id)
-        {
-            foreach (var employee in employees)
-            {
-                if (employee.Id == id)
-                {
-                    return employee;
-                }
-            }
-
-            return null;
-        }
-
-        private List<Employee> GetList()
-        {
-            var e1 = new Employee { Id = "1", Name = "Daniel", Email = "Daniel@yahoo.com " };
-            var e2 = new Employee { Id = "2", Name = "Vasile", Email = "Vasile@yahoo.com " };
-            var e3 = new Employee { Id = "3", Name = "Popescu", Email = "Popescu@yahoo.com " };
-
-            return new List<Employee> { e1, e2, e3 };
         }
     }
 }
