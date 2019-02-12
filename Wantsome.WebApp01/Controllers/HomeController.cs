@@ -13,6 +13,11 @@ namespace Wantsome.WebApp01.Controllers
         public HomeController()
         {
             manager = new EmployeeManager();
+
+            ViewBag.CurrentUserName = "Andrei";
+            ViewData["CurrentUserName2"] = "Andrei 2";
+            TempData["TempDataKey"] = "123";
+
         }
 
         // GET /
