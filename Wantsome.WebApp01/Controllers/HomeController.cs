@@ -6,12 +6,18 @@ namespace Wantsome.WebApp01.Controllers
 {
     public class HomeController : Controller
     {
+        private IEmployeeManager manager;
+
+        public HomeController()
+        {
+            manager = new EmployeeManager();
+        }
+
         //site/
         //site/home/
         //site/home/index
         public ActionResult Index()
         {
-            var manager = new EmployeeManager();
             var employees = manager.GetAll();
 
             //in folderul views
@@ -22,8 +28,6 @@ namespace Wantsome.WebApp01.Controllers
         //site/home/details/{id} - id un tip de param (uri param)
         public ActionResult Details(string id)
         {
-            var manager = new EmployeeManager();
-
             var employee = manager.Get(id);
 
             //Views/Home/Details.cshtml
@@ -41,7 +45,6 @@ namespace Wantsome.WebApp01.Controllers
         {
             if (ModelState.IsValid)
             {
-                IEmployeeManager manager = new EmployeeManager();
                 manager.Save(employee);
 
                 return Redirect("Index");
