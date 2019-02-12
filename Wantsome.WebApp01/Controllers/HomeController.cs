@@ -31,6 +31,23 @@ namespace Wantsome.WebApp01.Controllers
             return View(employee); //employee - modelul (prezent @model in view)
         }
 
+        [HttpGet]
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Add(Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+                return Redirect("Index");
+            }
+
+            return View(employee);
+        }
+
         private Employee FindById(List<Employee> employees, string id)
         {
             foreach (var employee in employees)

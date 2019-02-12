@@ -3,27 +3,33 @@
 <div>
     Hello from website! <br />
 
-    Number of employees: @Model.Count
+    Number of employees: @Model.Count <br /><br />
 
     <table style="width:100%">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>View</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>View</th>
+        </tr>
         </thead>
         <tbody>
-            @foreach (var emp in Model)
-            {
-                <tr>
-                    <td>@emp.Id</td>
-                    <td>@emp.Name</td>
-                    <td>@emp.Email</td>
-                    <td><a href="/home/details/@emp.Id">Click</a></td>
-                </tr>
-            }
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td>@emp.Name</td>
+                <td>@emp.Email</td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Home", new { @id = emp.Id }, null)
+                </td>
+            </tr>
+        }
         </tbody>
     </table>
+    
+    <br/>
+
+    @Html.ActionLink("New employee", "Add", "Home")
 </div>
