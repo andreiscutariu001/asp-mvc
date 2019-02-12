@@ -1,0 +1,29 @@
+﻿@model List<Wantsome.WebApp01.Models.Employee>
+
+<div>
+    Hello from website! <br />
+
+    Number of employees: @Model.Count
+
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var emp in Model)
+            {
+                <tr>
+                    <td>@emp.Id</td>
+                    <td>@emp.Name</td>
+                    <td>@emp.Email</td>
+                    <td><a href="/home/details/@emp.Id">Click</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
