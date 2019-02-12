@@ -13,33 +13,35 @@ namespace Wantsome.WebApp01.Controllers
             manager = new EmployeeManager();
         }
 
-        //site/
-        //site/home/
-        //site/home/index
+        // GET /
+        // GET /home/
+        // GET /home/index
         public ActionResult Index()
         {
             var employees = manager.GetAll();
 
-            //in folderul views
             //Views/Home/Index.cshtml
-            return View(employees); //employees - modelul (prezent @model in view)
+            return View(employees); //employees - (@model in view)
         }
 
-        //site/home/details/{id} - id un tip de param (uri param)
+        // GET /home/details/{id} - id un tip de param (uri param)
         public ActionResult Details(string id)
         {
             var employee = manager.Get(id);
 
             //Views/Home/Details.cshtml
-            return View(employee); //employee - modelul (prezent @model in view)
+            return View(employee); //employee - (@model in view)
         }
 
+        // GET /home/add
         [HttpGet]
         public ActionResult Add()
         {
+            //Views/Home/Add.cshtml
             return View();
         }
 
+        // POST /home/add + request body
         [HttpPost]
         public ActionResult Add(Employee employee)
         {
@@ -50,6 +52,7 @@ namespace Wantsome.WebApp01.Controllers
                 return Redirect("Index");
             }
 
+            //Views/Home/Add.cshtml
             return View(employee);
         }
     }
