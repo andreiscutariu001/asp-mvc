@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Wantsome.WebApp01.Models
+namespace Wantsome.WebApp01.Models.Employee
 {
     public class EmployeeManager : IEmployeeManager
     {

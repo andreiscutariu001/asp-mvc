@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Web.Mvc;
 using Wantsome.WebApp01.Models;
+using Wantsome.WebApp01.Models.Employee;
 
 namespace Wantsome.WebApp01.Controllers
 {
@@ -35,10 +37,17 @@ namespace Wantsome.WebApp01.Controllers
 
         // GET /home/add
         [HttpGet]
-        public ActionResult Add()
+        public ActionResult Add(string id)
         {
+            if (id == null)
+            {
+                return View();
+            }
+
+            var emp = manager.Get(id);
+
             //Views/Home/Add.cshtml
-            return View();
+            return View(emp);
         }
 
         // POST /home/add + request body

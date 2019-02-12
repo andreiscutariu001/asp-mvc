@@ -1,4 +1,4 @@
-﻿@model IList<Wantsome.WebApp01.Models.Employee>
+﻿@model IList<Wantsome.WebApp01.Models.Employee.Employee>
 
 <div>
     Hello from website! <br />
@@ -11,7 +11,7 @@
             <th>Id</th>
             <th>Name</th>
             <th>Email</th>
-            <th>View</th>
+            <th>Edit</th>
         </tr>
         </thead>
         <tbody>
@@ -22,7 +22,7 @@
                 <td>@emp.Name</td>
                 <td>@emp.Email</td>
                 <td>
-                    @Html.ActionLink("Details", "Details", "Home", new { @id = emp.Id }, null)
+                    @Html.ActionLink("Edit", "Add", "Home", new { @id = emp.Id }, null)
                 </td>
             </tr>
         }

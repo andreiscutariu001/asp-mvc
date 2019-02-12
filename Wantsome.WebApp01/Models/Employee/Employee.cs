@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Globalization;
 
-namespace Wantsome.WebApp01.Models
+namespace Wantsome.WebApp01.Models.Employee
 {
     public class Employee
     {
