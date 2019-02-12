@@ -6,7 +6,7 @@ using Wantsome.WebApp01.Models.Employee;
 
 namespace Wantsome.WebApp01.Controllers
 {
-    public class HomeController : Controller
+     public class HomeController : Controller
     {
         private IEmployeeManager manager;
 
@@ -17,7 +17,6 @@ namespace Wantsome.WebApp01.Controllers
             ViewBag.CurrentUserName = "Andrei";
             ViewData["CurrentUserName2"] = "Andrei 2";
             TempData["TempDataKey"] = "123";
-
         }
 
         // GET /
