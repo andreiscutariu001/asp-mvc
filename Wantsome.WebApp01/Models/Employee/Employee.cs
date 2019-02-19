@@ -18,5 +18,7 @@ namespace Wantsome.WebApp01.Models.Employee
 
         [DisplayName("Details")]
         public string Details { get; set; }
+
+
     }
 }
